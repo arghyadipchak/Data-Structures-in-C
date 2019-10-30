@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Sorting Functions:
+//Selection Sort, Bubble Sort
+//Insertion Sort, Merge Sort, Heap Sort
+
 void swap(int *arr,int p1,int p2){
   int tmp = *(arr+p1);
   *(arr+p1) = *(arr+p2);
@@ -34,15 +38,17 @@ void insertion_sort(int *arr,int n){
   }
 }
 void merge(int *arr,int *ar1,int n1,int *ar2,int n2){
-  int p1=0,p2=0;
+  int p1=0;
+  int p2=0;
+  int p=0;
   while(p1<n1 && p2<n2){
     if(ar1[p1]<=ar2[p2])
-      arr[p1+p2] = ar1[p1++];
+      arr[p++] = ar1[p1++];
     else
-      arr[p1+p2] = ar2[p2++];
+      arr[p++] = ar2[p2++];
   }
-  while(p1<n1) arr[p1+p2] = ar1[p1++];
-  while(p2<n2) arr[p1+p2] = ar2[p2++];
+  while(p1<n1) arr[p++] = ar1[p1++];
+  while(p2<n2) arr[p++] = ar2[p2++];
 }
 void merge_sort(int *arr,int n){
   if(n<=1) return;
@@ -56,14 +62,11 @@ void merge_sort(int *arr,int n){
   merge_sort(ar2,n-n/2);
   merge(arr,ar1,n/2,ar2,n-n/2);
 }
-int heap_sort(int *arr,int n){
-
+void heap_sort(int *arr,int n){
+  return;
 }
+//All The Sorting Functions are to be called as
+//func_sort(<array pointer>,<size>);
 int main(){
-  int arr[]={25,15,36,24,10};
-  merge_sort(arr,5);
-  for(int i=0;i<5;i++)
-    printf("%d ",arr[i]);
-  printf("\n");
   return 0;
 }
