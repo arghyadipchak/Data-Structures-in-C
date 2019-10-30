@@ -15,12 +15,55 @@ void selection_sort(int *arr,int n){
     if(minpos!=i) swap(arr,i,minpos);
   }
 }
-void buuble_sort(int *arr,int n){
+void bubble_sort(int *arr,int n){
   for(int i=n-1;i>0;i--){
     for(int j=0;j<i;j++)
       if(arr[j]>arr[j+1]) swap(arr,j,j+1);
   }
 }
 void insertion_sort(int *arr,int n){
-  
+  int val,pos;
+  for(int i=1;i<n;i++){
+    val=arr[i];
+    pos=i;
+    while(pos>0 && arr[pos-1]>val){
+      arr[pos] = arr[pos-1];
+      pos--;
+    }
+    if(pos!=i) arr[pos]=val;
+  }
+}
+void merge(int *arr,int *ar1,int n1,int *ar2,int n2){
+  int p1=0,p2=0;
+  while(p1<n1 && p2<n2){
+    if(ar1[p1]<=ar2[p2])
+      arr[p1+p2] = ar1[p1++];
+    else
+      arr[p1+p2] = ar2[p2++];
+  }
+  while(p1<n1) arr[p1+p2] = ar1[p1++];
+  while(p2<n2) arr[p1+p2] = ar2[p2++];
+}
+void merge_sort(int *arr,int n){
+  if(n<=1) return;
+  int *ar1 = (int*) calloc(n/2,sizeof(int));
+  int *ar2 = (int*) calloc(n-n/2,sizeof(int));
+  for(int i=0;i<n/2;i++)
+    ar1[i] = arr[i];
+  for(int i=0;i<n-n/2;i++)
+    ar2[i] = arr[i+n/2];
+  merge_sort(ar1,n/2);
+  merge_sort(ar2,n-n/2);
+  merge(arr,ar1,n/2,ar2,n-n/2);
+}
+int heap_sort(int *arr,int n){
+
+}
+int main(){
+  int arr[]={25,15,36,24,10};
+  merge_sort(arr,5);
+  for(int i=0;i<5;i++)
+    printf("%d ",arr[i]);
+  printf("\n");
+  return 0;
 }
