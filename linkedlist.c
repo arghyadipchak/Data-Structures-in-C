@@ -99,7 +99,7 @@ node* delnodepos(node* head,int pos)
         }
       while((temp!=NULL)&&(count<pos))
            temp=temp->next;
-       
+
 	 }
 int checkempty(node* head)
     {if(head==NULL)
@@ -139,6 +139,6 @@ int main()
       {printf("Enter id and name of student respectively :");
        scanf("%d",&id);
        gets(name);
-       
+
 	  }
    }
