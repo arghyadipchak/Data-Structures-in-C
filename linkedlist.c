@@ -1,19 +1,20 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 typedef struct studentNODE
       {int id;
-       char* name;
-       struct studentNODE* prev=NULL,next=NULL;
+       char name[300];
+       struct studentNODE* prev=NULL,*next=NULL;
       }node;
-node* createnode(int n,char* str)
+node* createnode(int n,char str[])
      {node* temp=NULL;
       temp=(node*)malloc(sizeof(node));
       temp->id=n;
-      temp->name=str;
+      strcpy(temp->name,str);
       return temp;
 	 }
-node* append(node* head,int n,char* str)
-     {node* temp=NULL,ptr=NULL;
+node* append(node* head,int n,char str[])
+     {node* temp=NULL,*ptr=NULL;
       temp=createnode(n,str);
 	  if(head==NULL)
 	    {temp->prev=NULL;
@@ -30,7 +31,7 @@ node* append(node* head,int n,char* str)
 		}
 	  return head;
 	 }
-node* addbegin(node* head,int n,char* str)
+node* addbegin(node* head,int n,char str[])
      {node* temp=NULL;
       temp=createnode(n,str);
       temp->prev=NULL;
@@ -38,16 +39,16 @@ node* addbegin(node* head,int n,char* str)
       head=temp;
       return head;
 	 }
-void addnode(node* head,int n,char* str,int pos)
-     {node* temp=NULL,ptr=head;
+void addnode(node* head,int n,char str[],int pos)
+     {node* temp=NULL,*ptr=head;
       int count=0;
 	  temp=createnode(n,str);
-      if((count++)<(pos-1))
+      while((count++)<(pos-2))
         ptr=ptr->next;
-      temp->next=ptr;
-      temp->prev=ptr->prev;
-      ptr->prev->next=temp;
-      ptr->prev=temp;
+      temp->prev=ptr;
+      temp->next=ptr->next;
+      ptr->next->prev=temp;
+      ptr->next=temp;
 	 }
 node* delbegin(node* head)
      {node* temp=head;
@@ -76,7 +77,7 @@ node* delnodeval(node* head,int val)
       while((temp->id!=val)&&(temp!=NULL))
            temp=temp->next;
 	  if(temp==NULL)
-	     printf("ID corresponding to data to be deleted NOT found");
+	     printf("ID corresponding to data to be deleted NOT found\n");
 	  else if(temp==head)
 	        {temp->next->prev=NULL;
 	         head=head->next;
@@ -88,18 +89,8 @@ node* delnodeval(node* head,int val)
 			  if(temp->next!=NULL)
 			     temp->next->prev=temp->prev;
 			 }
-	  printf("Data corresponding to ID entered deleted successfully");
+	  printf("Data corresponding to ID entered deleted successfully\n");
 	  return head;
-	 }
-node* delnodepos(node* head,int pos)
-     {node* temp=head;int count=1;
-	  if(pos==1)
-        {head=delbegin(head);
-         return head;
-        }
-      while((temp!=NULL)&&(count<pos))
-           temp=temp->next;
-
 	 }
 int checkempty(node* head)
     {if(head==NULL)
@@ -126,19 +117,85 @@ void searchlist(node* head,int val)
 			  }
 		  }
     if(ptr==NULL)
-       printf("ID not found");
+       printf("ID not found\n");
     else
-       printf("ID found at node number %d",count);
+       printf("ID found at node number %d\n Name of student: %s\n",count,ptr->name);
 	}
 int main()
-   {node* strear=NULL;
-    int id,opt;
+   {node* start=NULL;
+    int id,opt,pos,choice;
     char name[300];
-    /*printf("Enter\n(1) for entering data ina node\n(2) for deleting data of last node\n(3)for ")
     do
-      {printf("Enter id and name of student respectively :");
-       scanf("%d",&id);
-       gets(name);
-
-	  }
+      {printf("Enter\n(1)For adding node to the end of the list\n(2)For adding node in the beginning\
+	  \n(3)For adding node at a certain position\n(4)For deleting first node\n(5)For deleting last node\n(6)For deleting node with a certain data\
+	 \n(7)For checking whether the list is empty\n(8)For printing the list\n(9)For searching a particular data in the list\n");
+	  scanf("%d",&opt);
+	  switch (opt)
+	      {case 1:printf("Enter Name of student:\n");
+	              scanf("%s",name);
+	              printf("Enter ID of the student:");
+	              scanf("%d",&id);
+	              start=append(start,id,name);
+	              break;
+	        case 2:printf("Enter Name of student:\n");
+	              scanf("%s",name);
+	              printf("Enter ID of the student:");
+	              scanf("%d",&id);
+	              start=addbegin(start,id,name);
+	              break;
+	        case 3:printf("Enter Name of student:\n");
+	              scanf("%s",name);
+	              printf("Enter ID of the student:");
+	              scanf("%d",&id);
+	              printf("Enter position of inserting data:");
+	              scanf("%d",&pos);
+	              addnode(start,id,name,pos);
+	              break;
+	        case 4:if(checkempty(start))
+	                 printf("List is empty,deletion operation INVALID!");
+	                else
+	                 {start=delbegin(start);
+	                  printf("Deleted successfully\n");
+	                 }
+	                break;
+	        case 5:if(checkempty(start))
+	                 printf("List is empty,deletion operation INVALID!");
+	                else
+	                 {start=dellast(start);
+	                  printf("Deleted successfully\n");
+	                 }
+	                break;
+	        case 6:if(checkempty(start))
+	                 printf("List is empty,deletion operation INVALID!");
+	                else
+	                 {printf("Enter ID of student whose data is to deleted:");
+	                  scanf("%d",&id);
+					  start=delnodeval(start,id);
+	                 }
+	                break;
+	        case 7: if(checkempty(start))
+	                 printf("List is empty");
+	                else
+	                  printf("List is not empty");
+	                break;
+	        case 8:if(checkempty(start))
+			         printf("List is empty"); 
+			        else 
+					 printlist(start);
+					break;
+			case 9:if(checkempty(start))
+			        printf("List empty,no data found");
+			       else
+			        {printf("Enter ID of data to be searched for:");
+			         scanf("%d",&id);
+					 searchlist(start,id);
+				    }
+				   break;
+            default:printf("INVALID choice");
+			        break;	      
+		  }
+		printf("Do you want to choose again? 1 for YES,0 for NO\n");
+		scanf("%d",&choice);
+	  }while(choice);
+   return 0;
    }
