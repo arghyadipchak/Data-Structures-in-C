@@ -3,7 +3,7 @@
 
 //Sorting Functions:
 //Selection Sort, Bubble Sort
-//Insertion Sort, Merge Sort, Heap Sort
+//Insertion Sort, Merge Sort
 
 void swap(int *arr,int p1,int p2){
   int tmp = *(arr+p1);
@@ -61,9 +61,6 @@ void merge_sort(int *arr,int n){
   merge_sort(ar1,n/2);
   merge_sort(ar2,n-n/2);
   merge(arr,ar1,n/2,ar2,n-n/2);
-}
-void heap_sort(int *arr,int n){
-  return;
 }
 //All The Sorting Functions are to be called as
 //func_sort(<array pointer>,<size>);
