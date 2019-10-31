@@ -65,5 +65,33 @@ void merge_sort(int *arr,int n){
 //All The Sorting Functions are to be called as
 //func_sort(<array pointer>,<size>);
 int main(){
+  int n,ch;
+  int *arr = (int*)malloc(1);
+  void (*func[4])(int*,int)={selection_sort,bubble_sort,insertion_sort,merge_sort};
+  while(1){
+    printf("\n\t::MENU::\n");
+    printf("1.Selection Sort\n");
+    printf("2.Bubble Sort\n");
+    printf("3.Insertion Sort\n");
+    printf("4.Merge Sort\n");
+    printf("5.Exit\n");
+    printf("\nEnter Choice: ");
+    scanf("%d",&ch);
+    if(ch==5)break;
+    printf("\nEnter Length: ");
+    scanf("%d",&n);
+    arr = (int*) realloc(arr,n*sizeof(int));
+    printf("Enter %d Elements:\n",n);
+    for(int i=0;i<n;i++)
+      scanf("%d",arr+i);
+    printf("\nArray:\n");
+    for(int i=0;i<n;i++)printf("%d ",arr[i]);
+    printf("\n");
+    (*func[ch])(arr,n);
+    printf("Sorted Array:\n");
+    for(int i=0;i<n;i++)printf("%d ",arr[i]);
+    printf("\n");
+  }
+  printf("\t--END--\n");
   return 0;
 }
