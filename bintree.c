@@ -45,5 +45,7 @@ int main(){
   #endif
   node *bt = NULL;
 
+
+  printf("\t----X----\n\n");
   return 0;
 }
