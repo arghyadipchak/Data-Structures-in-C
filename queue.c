@@ -51,6 +51,11 @@ int getRear(queue *q){
 }
 
 int main(){
+  #if defined(_WIN32)
+    system("cls");
+  #elif defined(__linux__) || defined(__APPLE__)
+    system("clear");
+  #endif
   int n;
   printf("Enter Capacity of Queue: ");
   scanf("%d",&n);
@@ -95,7 +100,7 @@ int main(){
       else printf("Rear Item: %d\n",getRear(q));
     }
     else if(ch==6){
-      printf((isFull(q))?"Queue Full!\n":"Queue still has Space!\n");
+      printf((isFull(q))?"Queue Full!\n":"Queue has Space!\n");
     }
     else if(ch==7){
       printf((isEmpty(q))?"Queue Empty!\n":"Queue has Elements!\n");
