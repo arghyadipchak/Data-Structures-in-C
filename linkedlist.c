@@ -122,6 +122,11 @@ void searchlist(node* head,int val)
        printf("ID found at node number %d\n Name of student: %s\n",count,ptr->name);
 	}
 int main()
+  #if defined(_WIN32)
+    system("cls");
+  #elif defined(__linux__) || defined(__APPLE__)
+    system("clear");
+  #endif
    {node* start=NULL;
     int id,opt,pos,choice;
     char name[300];
@@ -179,8 +184,8 @@ int main()
 	                  printf("List is not empty");
 	                break;
 	        case 8:if(checkempty(start))
-			         printf("List is empty"); 
-			        else 
+			         printf("List is empty");
+			        else
 					 printlist(start);
 					break;
 			case 9:if(checkempty(start))
@@ -192,7 +197,7 @@ int main()
 				    }
 				   break;
             default:printf("INVALID choice");
-			        break;	      
+			        break;
 		  }
 		printf("Do you want to choose again? 1 for YES,0 for NO\n");
 		scanf("%d",&choice);

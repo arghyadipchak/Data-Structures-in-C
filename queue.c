@@ -44,10 +44,10 @@ void display_queue(queue *q){
   }
 }
 int getFront(queue *q){
-  return q->que->item;
+  return front_element(q->que);
 }
 int getRear(queue *q){
-  return last_element(q->que);
+  return rear_element(q->que);
 }
 
 int main(){
@@ -69,7 +69,6 @@ int main(){
     printf("\nEnter Choice: ");
     scanf("%d",&ch);
     printf("\n");
-    fflush(stdin);
     if(ch==1){
       printf("Enter Element: ");
       scanf("%d",&n);
@@ -96,10 +95,10 @@ int main(){
       else printf("Rear Item: %d\n",getRear(q));
     }
     else if(ch==6){
-      printf((isFull(q))?"Queue Full!\n":"Queue Not Full!\n");
+      printf((isFull(q))?"Queue Full!\n":"Queue still has Space!\n");
     }
     else if(ch==7){
-      printf((isEmpty(q))?"Queue Empty!\n":"Queue Not Empty!\n");
+      printf((isEmpty(q))?"Queue Empty!\n":"Queue has Elements!\n");
     }
     else if(ch==8) break;
     else printf("Invalid Choice!!\n");

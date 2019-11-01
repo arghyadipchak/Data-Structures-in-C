@@ -48,9 +48,12 @@ node* rem_from_rear(node *obj){
   else rem_from_rear(obj->next);
   return obj;
 }
-int last_element(node *obj){
+int front_element(node *obj){
+  return obj->item;
+}
+int rear_element(node *obj){
   if(obj->next==NULL) return obj->item;
-  return last_element(obj->next);
+  return rear_element(obj->next);
 }
 int size(node *obj){
   if(obj==NULL)return 0;

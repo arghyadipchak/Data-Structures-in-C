@@ -65,6 +65,11 @@ void merge_sort(int *arr,int n){
 //All The Sorting Functions are to be called as
 //func_sort(<array pointer>,<size>);
 int main(){
+  #if defined(_WIN32)
+    system("cls");
+  #elif defined(__linux__) || defined(__APPLE__)
+    system("clear");
+  #endif
   int n,ch;
   int *arr = (int*)malloc(1);
   void (*func[4])(int*,int)={selection_sort,bubble_sort,insertion_sort,merge_sort};
