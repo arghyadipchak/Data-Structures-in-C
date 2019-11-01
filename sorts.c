@@ -92,6 +92,6 @@ int main(){
     for(int i=0;i<n;i++)printf("%d ",arr[i]);
     printf("\n");
   }
-  printf("\t--END--\n");
+  printf("\t----X----\n");
   return 0;
 }
