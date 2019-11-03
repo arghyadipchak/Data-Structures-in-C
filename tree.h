@@ -1,66 +1,88 @@
 #include <stdlib.h>
+#define PREORDER 0
+#define INORDER 1
+#define POSTORDER 2
 
 typedef struct node{
   int key;
   struct node *left,*right;
 }node;
-
+typedef struct tuple{
+  int *ar;
+  int size;
+}tuple;
 int sint = sizeof(int);
 
-int* preorder(node *tree){
-  if(tree==NULL) return;
-  int *a1,*a2,n1,n2;
-  if(tree->left==NULL) n1=0;
-  else{
-    a1 = inorder(tree->left);
-    n1 = sizeof(a1)/sint;
+tuple* preorder(node *tree){
+  tuple *t = (tuple*) malloc(sizeof(tuple));
+  if(tree==NULL){
+    t->ar = NULL;
+    t->size = 0;
   }
-  if(tree->right==NULL) n2=0;
   else{
-    a2 = inorder(tree->right);
-    n2 = sizeof(a2)/sint;
+    tuple *t1,*t2;
+    t1 = preorder(tree->left);
+    t2 = preorder(tree->right);
+    t->size = t1->size+t2->size+1;
+    t->ar = (int*) calloc(t->size,sint);
+    t->ar[0] = tree->key;
+    for(int i=0;i<t1->size;i++) t->ar[i+1] = t1->ar[i];
+    for(int i=0;i<t2->size;i++) t->ar[t1->size+1+i] = t2->ar[i];
   }
-  int *ar = (int*) calloc(n1+n2+1,sint);
-  ar[0] = tree->key;
-  for(int i=0;i<n1;i++) ar[i+1] = a1[i];
-  for(int i=0;i<n2;i++) ar[n1+1+i] = a2[i];
-  return ar;
+  return t;
 }
-int* inorder(node *tree){
-  if(tree==NULL) return;
-  int *a1,*a2,n1,n2;
-  if(tree->left==NULL) n1=0;
-  else{
-    a1 = inorder(tree->left);
-    n1 = sizeof(a1)/sint;
+tuple* inorder(node *tree){
+  tuple *t = (tuple*) malloc(sizeof(tuple));
+  if(tree==NULL){
+    t->ar = NULL;
+    t->size = 0;
   }
-  if(tree->right==NULL) n2=0;
   else{
-    a2 = inorder(tree->right);
-    n2 = sizeof(a2)/sint;
+    tuple *t1,*t2;
+    t1 = preorder(tree->left);
+    t2 = preorder(tree->right);
+    t->size = t1->size+t2->size+1;
+    t->ar = (int*) calloc(t->size,sint);
+    for(int i=0;i<t1->size;i++) t->ar[i] = t1->ar[i];
+    t->ar[t1->size] = tree->key;
+    for(int i=0;i<t2->size;i++) t->ar[t1->size+1+i] = t2->ar[i];
   }
-  int *ar = (int*) calloc(n1+n2+1,sint);
-  for(int i=0;i<n1;i++) ar[i] = a1[i];
-  ar[n1] = tree->key;
-  for(int i=0;i<n2;i++) ar[n1+1+i] = a2[i];
-  return ar;
+  return t;
+
 }
-int* postorder(node *tree){
-  if(tree==NULL) return;
-  int *a1,*a2,n1,n2;
-  if(tree->left==NULL) n1=0;
-  else{
-    a1 = inorder(tree->left);
-    n1 = sizeof(a1)/sint;
+tuple* postorder(node *tree){
+  tuple *t = (tuple*) malloc(sizeof(tuple));
+  if(tree==NULL){
+    t->ar = NULL;
+    t->size = 0;
   }
-  if(tree->right==NULL) n2=0;
   else{
-    a2 = inorder(tree->right);
-    n2 = sizeof(a2)/sint;
+    tuple *t1,*t2;
+    t1 = preorder(tree->left);
+    t2 = preorder(tree->right);
+    t->size = t1->size+t2->size+1;
+    t->ar = (int*) calloc(t->size,sint);
+    for(int i=0;i<t1->size;i++) t->ar[i] = t1->ar[i];
+    for(int i=0;i<t2->size;i++) t->ar[t1->size+i] = t2->ar[i];
+    t->ar[t->size-1] = tree->key;
   }
-  int *ar = (int*) calloc(n1+n2+1,sint);
-  for(int i=0;i<n1;i++) ar[i] = a1[i];
-  for(int i=0;i<n2;i++) ar[n1+i] = a2[i];
-  ar[n1+n2] = tree->key;
-  return ar;
+  return t;
+}
+void print_order(node *tree,int odr){
+  tuple *tup;
+  if(tree==NULL) printf("Empty Tree!\n");
+  else if(odr==PREORDER){
+    printf("Preorder Transversal:\n");
+    tup = preorder(tree);
+  }
+  else if(odr==INORDER){
+    printf("Inorder Transversal:\n");
+    tup = inorder(tree);
+  }
+  else if(odr==POSTORDER){
+    printf("Postorder Transversal:\n");
+    tup = postorder(tree);
+  }
+  for(int i=0;i<tup->size;i++) printf("%d ",tup->ar[i]);
+  printf("\n");
 }

@@ -36,7 +36,7 @@ typedef struct tqueue{
   int size;
 }tqueue;
 tqueue* create_queue(){
-  tqueue *tq = t(queue*) malloc(sizeof(tqueue));
+  tqueue *tq = (tqueue*) malloc(sizeof(tqueue));
   tq->que = NULL;
   tq->size = 0;
   return tq;
@@ -47,7 +47,6 @@ int isEmpty(tqueue *tq){
 void Enqueue(tqueue *tq,node *elm){
   tq->que = insert_at_rear(tq->que,elm);
   tq->size++;
-  return 0;
 }
 node* Dequeue(tqueue *tq){
   if(isEmpty(tq)) return NULL;

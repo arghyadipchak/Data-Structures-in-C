@@ -53,11 +53,10 @@ int main(){
   #elif defined(__linux__) || defined(__APPLE__)
     system("clear");
   #endif
-  int n;
+  int n,ch;
   printf("Enter Capacity of Stack: ");
   scanf("%d",&n);
   stack *s = create_stack(n);
-  int ch;
   while(1){
     printf("\n\t::MENU::\n");
     printf("1.Push\n");
