@@ -4,7 +4,7 @@
 typedef struct studentNODE
       {int id;
        char name[300];
-       struct studentNODE* prev=NULL,*next=NULL;
+       struct studentNODE *prev,*next;
       }node;
 node* createnode(int n,char str[])
      {node* temp=NULL;
@@ -121,85 +121,86 @@ void searchlist(node* head,int val)
     else
        printf("ID found at node number %d\n Name of student: %s\n",count,ptr->name);
 	}
-int main()
+int main(){
   #if defined(_WIN32)
     system("cls");
   #elif defined(__linux__) || defined(__APPLE__)
     system("clear");
   #endif
-   {node* start=NULL;
+    node* start=NULL;
     int id,opt,pos,choice;
     char name[300];
     do
-      {printf("Enter\n(1)For adding node to the end of the list\n(2)For adding node in the beginning\
+      {printf("\nEnter\n(1)For adding node to the end of the list\n(2)For adding node in the beginning\
 	  \n(3)For adding node at a certain position\n(4)For deleting first node\n(5)For deleting last node\n(6)For deleting node with a certain data\
 	 \n(7)For checking whether the list is empty\n(8)For printing the list\n(9)For searching a particular data in the list\n");
 	  scanf("%d",&opt);
+    printf("\n");
 	  switch (opt)
 	      {case 1:printf("Enter Name of student:\n");
 	              scanf("%s",name);
-	              printf("Enter ID of the student:");
+	              printf("Enter ID of the student: ");
 	              scanf("%d",&id);
 	              start=append(start,id,name);
 	              break;
 	        case 2:printf("Enter Name of student:\n");
 	              scanf("%s",name);
-	              printf("Enter ID of the student:");
+	              printf("Enter ID of the student: ");
 	              scanf("%d",&id);
 	              start=addbegin(start,id,name);
 	              break;
 	        case 3:printf("Enter Name of student:\n");
 	              scanf("%s",name);
-	              printf("Enter ID of the student:");
+	              printf("Enter ID of the student: ");
 	              scanf("%d",&id);
-	              printf("Enter position of inserting data:");
+	              printf("Enter position of inserting data: ");
 	              scanf("%d",&pos);
 	              addnode(start,id,name,pos);
 	              break;
 	        case 4:if(checkempty(start))
-	                 printf("List is empty,deletion operation INVALID!");
+	                 printf("List is empty,deletion operation INVALID!\n");
 	                else
 	                 {start=delbegin(start);
 	                  printf("Deleted successfully\n");
 	                 }
 	                break;
 	        case 5:if(checkempty(start))
-	                 printf("List is empty,deletion operation INVALID!");
+	                 printf("List is empty,deletion operation INVALID!\n");
 	                else
 	                 {start=dellast(start);
 	                  printf("Deleted successfully\n");
 	                 }
 	                break;
 	        case 6:if(checkempty(start))
-	                 printf("List is empty,deletion operation INVALID!");
+	                 printf("List is empty,deletion operation INVALID!\n");
 	                else
-	                 {printf("Enter ID of student whose data is to deleted:");
+	                 {printf("Enter ID of student whose data is to deleted: ");
 	                  scanf("%d",&id);
 					  start=delnodeval(start,id);
 	                 }
 	                break;
 	        case 7: if(checkempty(start))
-	                 printf("List is empty");
+	                 printf("List is empty\n");
 	                else
-	                  printf("List is not empty");
+	                  printf("List is not empty\n");
 	                break;
 	        case 8:if(checkempty(start))
-			         printf("List is empty");
+			         printf("List is empty\n");
 			        else
 					 printlist(start);
 					break;
 			case 9:if(checkempty(start))
-			        printf("List empty,no data found");
+			        printf("List empty,no data found\n");
 			       else
-			        {printf("Enter ID of data to be searched for:");
+			        {printf("Enter ID of data to be searched for: ");
 			         scanf("%d",&id);
 					 searchlist(start,id);
 				    }
 				   break;
-            default:printf("INVALID choice");
+            default:printf("INVALID choice\n");
 			        break;
 		  }
-		printf("Do you want to choose again? 1 for YES,0 for NO\n");
+		printf("\nDo you want to choose again? 1 for YES,0 for NO\n");
 		scanf("%d",&choice);
 	  }while(choice);
    return 0;
