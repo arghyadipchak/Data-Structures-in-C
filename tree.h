@@ -71,18 +71,22 @@ tuple* postorder(node *tree){
 void print_order(node *tree,int odr){
   tuple *tup;
   if(tree==NULL) printf("Empty Tree!\n");
-  else if(odr==PREORDER){
-    printf("Preorder Transversal:\n");
-    tup = preorder(tree);
+  else{
+    switch(odr){
+      case PREORDER:
+        printf("Preorder Transversal:\n");
+        tup = preorder(tree);
+        break;
+      case INORDER:
+        printf("Inorder Transversal:\n");
+        tup = inorder(tree);
+        break;
+      case POSTORDER:
+        printf("Postorder Transversal:\n");
+        tup = postorder(tree);
+        break;
+    }
+    for(int i=0;i<tup->size;i++) printf("%d ",tup->ar[i]);
+    printf("\n");
   }
-  else if(odr==INORDER){
-    printf("Inorder Transversal:\n");
-    tup = inorder(tree);
-  }
-  else if(odr==POSTORDER){
-    printf("Postorder Transversal:\n");
-    tup = postorder(tree);
-  }
-  for(int i=0;i<tup->size;i++) printf("%d ",tup->ar[i]);
-  printf("\n");
 }
