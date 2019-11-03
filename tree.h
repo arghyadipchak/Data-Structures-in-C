@@ -39,8 +39,8 @@ tuple* inorder(node *tree){
   }
   else{
     tuple *t1,*t2;
-    t1 = preorder(tree->left);
-    t2 = preorder(tree->right);
+    t1 = inorder(tree->left);
+    t2 = inorder(tree->right);
     t->size = t1->size+t2->size+1;
     t->ar = (int*) calloc(t->size,sint);
     for(int i=0;i<t1->size;i++) t->ar[i] = t1->ar[i];
@@ -58,8 +58,8 @@ tuple* postorder(node *tree){
   }
   else{
     tuple *t1,*t2;
-    t1 = preorder(tree->left);
-    t2 = preorder(tree->right);
+    t1 = postorder(tree->left);
+    t2 = postorder(tree->right);
     t->size = t1->size+t2->size+1;
     t->ar = (int*) calloc(t->size,sint);
     for(int i=0;i<t1->size;i++) t->ar[i] = t1->ar[i];
