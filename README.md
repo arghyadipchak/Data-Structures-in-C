@@ -12,5 +12,5 @@ Group Members:
 * Soumyajyoti Kundu  
 * Kapil Krishna  
 * Varun Pramod Agarwal  
-* Debabrata Pal  
+* Rishika Agarwal  
 * Sandipan Mishra  
