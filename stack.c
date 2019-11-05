@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include "stack.h"
 
-int main(){
+//Credits: Sandipan Misra and Varun Pramod Agrawal
+int main(){                 //Implements Everything
   #if defined(_WIN32)
     system("cls");
   #elif defined(__linux__) || defined(__APPLE__)
@@ -59,5 +60,6 @@ int main(){
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
+  printf("Coded By: Sandipan Misra and Varun Pramod Agrawal\n")
   return 0;
 }
