@@ -7,7 +7,7 @@ while True:
     print "\t"+"-"*34
     print '\t|'+"::MENU::".center(32)+'|'
     for i in ['1','2','3','4','5','6','7','8','9','10']:
-        print '\t|'+(i+'.'+name[i]).ljust(32)+'|'
+        print '\t|'+(' '*(2-len(i))+i+'.'+name[i]).ljust(32)+'|'
     print "\t"+"-"*34
     ch = raw_input("\nEnter Choice: ")
     print
