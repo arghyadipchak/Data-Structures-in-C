@@ -2,37 +2,37 @@
 #include <stdlib.h>
 #include "llistint.h"
 
-typedef struct queue{
+//Credits: Amitakshar Biswas and Soumyajyoti Kundu
+typedef struct queue{               //Queue Structure
   node *que;
   int size,capt;
 }queue;
-
-queue* create_queue(int cp){
+queue* create_queue(int cp){        //Creates a Queue of capacity cp
   queue *q = (queue*) malloc(sizeof(queue));
   q->capt = cp;
   q->que = NULL;
   q->size = 0;
   return q;
 }
-int isFull(queue *q){
+int isFull(queue *q){               //Checks if Queue is Full
   return (q->size == q->capt)?1:0;
 }
-int isEmpty(queue *q){
+int isEmpty(queue *q){              //Checks if Queue is Empty
   return (q->size == 0)?1:0;
 }
-int Enqueue(queue *q,int elm){
+int Enqueue(queue *q,int elm){      //Inserts new Element in Queue
   if(isFull(q)) return 1;
   q->que = insert_at_rear(q->que,elm);
   q->size++;
   return 0;
 }
-int Dequeue(queue *q){
+int Dequeue(queue *q){              //Removes last Element from Queue
   if(isEmpty(q)) return 1;
   q->que = rem_from_front(q->que);
   q->size--;
   return 0;
 }
-void display_queue(queue *q){
+void display_queue(queue *q){       //Prints Queue
   if(isEmpty(q))
       printf("Queue Empty!!!\n");
   else{
@@ -43,14 +43,13 @@ void display_queue(queue *q){
       printf("\n");
   }
 }
-int getFront(queue *q){
+int getFront(queue *q){             //Returns First Element
   return front_element(q->que);
 }
-int getRear(queue *q){
+int getRear(queue *q){              //Returns Last Element
   return rear_element(q->que);
 }
-
-int main(){
+int main(){                         //Implements Everything
   #if defined(_WIN32)
     system("cls");
   #elif defined(__linux__) || defined(__APPLE__)
@@ -109,5 +108,6 @@ int main(){
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
+  printf("Amitakshar Biswas and Soumyajyoti Kundu\n");
   return 0;
 }

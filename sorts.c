@@ -12,7 +12,7 @@ void swap(int *arr,int p1,int p2){          //Swaps values of two positions of t
   *(arr+p1) = *(arr+p2);
   *(arr+p2) = tmp;
 }
-void selection_sort(int *arr,int n){        
+void selection_sort(int *arr,int n){
   int minpos;
   for(int i=0;i<n-1;i++){
     minpos=i;
@@ -100,5 +100,6 @@ int main(){                                   //Implements Everything
     printf("\n");
   }
   printf("\t----X----\n");
+  printf("Coded By: Soham Bakshi and Rishika Agrawal\n");
   return 0;
 }
