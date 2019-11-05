@@ -1,22 +1,24 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
+//Credits: Parijat Chakraborty and Soham Bakshi
 typedef struct studentNODE
       {int id;
        char name[300];
        struct studentNODE *prev,*next;
       }node;
-node* createnode(int n,char str[])
+node* createnode(int n,char str[])         		//Creates new node
      {node* temp=NULL;
-      temp=(node*)malloc(sizeof(node));
+      temp=(node*)malloc(sizeof(node));    
       temp->id=n;
       strcpy(temp->name,str);
       return temp;
 	 }
-node* append(node* head,int n,char str[])
+node* append(node* head,int n,char str[])  		//Adds node to the end of list
      {node* temp=NULL,*ptr=NULL;
       temp=createnode(n,str);
-	  if(head==NULL)
+	  if(head==NULL)           
 	    {temp->prev=NULL;
 	     temp->next=NULL;
 	     head=temp;
@@ -31,7 +33,7 @@ node* append(node* head,int n,char str[])
 		}
 	  return head;
 	 }
-node* addbegin(node* head,int n,char str[])
+node* addbegin(node* head,int n,char str[])		//Adds node to beginning of list
      {node* temp=NULL;
       temp=createnode(n,str);
       temp->prev=NULL;
@@ -39,7 +41,7 @@ node* addbegin(node* head,int n,char str[])
       head=temp;
       return head;
 	 }
-void addnode(node* head,int n,char str[],int pos)
+void addnode(node* head,int n,char str[],int pos)  //Adds node to a certain position
      {node* temp=NULL,*ptr=head;
       int count=0;
 	  temp=createnode(n,str);
@@ -50,14 +52,14 @@ void addnode(node* head,int n,char str[],int pos)
       ptr->next->prev=temp;
       ptr->next=temp;
 	 }
-node* delbegin(node* head)
+node* delbegin(node* head)						//Deletes first node
      {node* temp=head;
       head=head->next;
       head->prev=NULL;
       free(temp);
       return head;
 	 }
-node* dellast(node* head)
+node* dellast(node* head)						//Deletes last node
      {node* temp=head;
       while(temp->next!=NULL)
            temp=temp->next;
@@ -72,7 +74,7 @@ node* dellast(node* head)
 	     return head;
 		}
 	 }
-node* delnodeval(node* head,int val)
+node* delnodeval(node* head,int val)			//Deletes a node with certain value
      {node* temp=head;
       while((temp->id!=val)&&(temp!=NULL))
            temp=temp->next;
@@ -92,20 +94,20 @@ node* delnodeval(node* head,int val)
 	  printf("Data corresponding to ID entered deleted successfully\n");
 	  return head;
 	 }
-int checkempty(node* head)
+int checkempty(node* head)						//Checks if list is empty
     {if(head==NULL)
         return 1;
      else
         return 0;
 	}
-void printlist(node* head)
+void printlist(node* head)						//Prints list
     {node* ptr=head;
      while(ptr!=NULL)
           {printf("ID of student : %d\nName of student : %s\n\n",ptr->id,ptr->name);
            ptr=ptr->next;
 		  }
 	}
-void searchlist(node* head,int val)
+void searchlist(node* head,int val)				//Searches list for certain value
     {node* ptr=head;
     int count=1;
      while(ptr!=NULL)
@@ -121,7 +123,7 @@ void searchlist(node* head,int val)
     else
        printf("ID found at node number %d\n Name of student: %s\n",count,ptr->name);
 	}
-int main(){
+int main(){      								//Implements Everything
   #if defined(_WIN32)
     system("cls");
   #elif defined(__linux__) || defined(__APPLE__)
@@ -204,5 +206,6 @@ int main(){
 		scanf("%d",&choice);
 	  }while(choice);
     printf("\t----X----\n\n");
+    printf("Coded By: Parijat Chakraborty and Soham Bakshi\n");
    return 0;
    }

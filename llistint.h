@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+//Credits: Parijat Chakraborty
 typedef struct node{
   int item;
   struct node *previous,*next;

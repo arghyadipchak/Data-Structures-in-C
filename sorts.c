@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Credits: Soham Ghosh and Rishika Agrawal
+
 //Sorting Functions:
 //Selection Sort, Bubble Sort
 //Insertion Sort, Merge Sort
 
-void swap(int *arr,int p1,int p2){
+void swap(int *arr,int p1,int p2){          //Swaps values of two positions of the array
   int tmp = *(arr+p1);//arr[p1]
   *(arr+p1) = *(arr+p2);
   *(arr+p2) = tmp;
 }
-void selection_sort(int *arr,int n){
+void selection_sort(int *arr,int n){        
   int minpos;
   for(int i=0;i<n-1;i++){
     minpos=i;
@@ -64,7 +66,7 @@ void merge_sort(int *arr,int n){
 }
 //All The Sorting Functions are to be called as
 //func_sort(<array pointer>,<size>);
-int main(){
+int main(){                                   //Implements Everything
   #if defined(_WIN32)
     system("cls");
   #elif defined(__linux__) || defined(__APPLE__)
