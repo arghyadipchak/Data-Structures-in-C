@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "tree.h"
 
+//Credits: Arghyadip Chakraborty
 typedef struct lnode{                 //Linked list of nodes for Queue
   node *item;
   struct lnode *next;
