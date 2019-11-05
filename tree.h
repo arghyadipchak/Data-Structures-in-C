@@ -3,17 +3,17 @@
 #define INORDER 1
 #define POSTORDER 2
 
-typedef struct node{
+typedef struct node{              //Tree nodes structure
   int key;
   struct node *left,*right;
 }node;
-typedef struct tuple{
+typedef struct tuple{             //Stores variable length array
   int *ar;
   int size;
 }tuple;
 int sint = sizeof(int);
 
-tuple* preorder(node *tree){
+tuple* preorder(node *tree){      //Returns Preorder Transversal
   tuple *t = (tuple*) malloc(sizeof(tuple));
   if(tree==NULL){
     t->ar = NULL;
@@ -31,7 +31,7 @@ tuple* preorder(node *tree){
   }
   return t;
 }
-tuple* inorder(node *tree){
+tuple* inorder(node *tree){       //Returns Inorder Transversal
   tuple *t = (tuple*) malloc(sizeof(tuple));
   if(tree==NULL){
     t->ar = NULL;
@@ -50,7 +50,7 @@ tuple* inorder(node *tree){
   return t;
 
 }
-tuple* postorder(node *tree){
+tuple* postorder(node *tree){     //Returns Postorder Transversal
   tuple *t = (tuple*) malloc(sizeof(tuple));
   if(tree==NULL){
     t->ar = NULL;
@@ -68,7 +68,7 @@ tuple* postorder(node *tree){
   }
   return t;
 }
-void print_order(node *tree,int odr){
+void print_order(node *tree,int odr){   //Prints Transversal
   tuple *tup;
   if(tree==NULL) printf("Empty Tree!\n");
   else{
