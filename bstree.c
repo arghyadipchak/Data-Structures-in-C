@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "tree.h"
 
-//Credits: Kapil Krishna
+//Credits: G Kapil Krishna
 node* new_node(int val){              //Creates new node
   node *tmp = malloc(sizeof(node));
   tmp->key = val;
@@ -59,6 +59,6 @@ int main(){                           //Implements Everything
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
-  pritnf("Coded By: Kapil Krishna\n");
+  pritnf("Coded By: G Kapil Krishna\n");
   return 0;
 }
