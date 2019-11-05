@@ -120,7 +120,45 @@ int eval_post(array *arr){
   return Pop(num);
 }
 int main(){
-  array *t = in_to_post("2+(3^5*2-1)");
-  print_array(t);
-  printf("%d\n",eval_post(t));
+  #if defined(_WIN32)
+    system("cls");
+  #elif defined(__linux__) || defined(__APPLE__)
+    system("clear");
+  #endif
+  array *a;
+  char *s;
+  int n,ch;
+  while(1){
+    printf("\n\t::MENU::\n");
+    printf("1.Infix to Postfix\n");
+    printf("2.Evaluate Postfix\n");
+    printf("3.Evaluate Expression\n");
+    printf("4.Exit\n");
+    printf("\nEnter Choice: ");
+    scanf("%d",&ch);
+    printf("\n");
+    if(ch==1 || ch==2 || ch==3){
+      printf("Enter Length(>=Required): ");
+      scanf("%d",&n);
+      s = (char*) calloc(n,sizeof(char));
+      getchar();
+      printf("Enter Expression:\n");
+      //fgets(s,n+1,stdin);
+      scanf("%[^\n]%*c",s);
+      if(ch==1){
+        printf("Postfix Expression:\n");
+        print_array(in_to_post(s));
+      }
+      else if(ch==2)
+        printf("Evaluated: %d\n",eval_post(str_to_arr(s)));
+      else if(ch==3){
+        printf("Evaluation:\n");
+        printf("%s = %d\n",s,eval_post(in_to_post(s)));
+      }
+    }
+    else if(ch==4) break;
+    else printf("Invalid Choice!!\n");
+  }
+  printf("\t----X----\n\n");
+  return 0;
 }
