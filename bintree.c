@@ -2,14 +2,15 @@
 #include <stdlib.h>
 #include "tree_que.h"
 
-node* new_node(int val){
+//Credits: Arghyadip Chakraborty
+node* new_node(int val){          //Creates new node
   node *tmp = malloc(sizeof(node));
   tmp->key = val;
   tmp->left = NULL;
   tmp->right = NULL;
   return tmp;
 }
-node* insert(node *tree,int val){
+node* insert(node *tree,int val){ //Inserts new node at the least possible depth
   if(tree==NULL){
     tree = new_node(val);
   }
@@ -33,12 +34,12 @@ node* insert(node *tree,int val){
   }
   return tree;
 }
-node* dfs(node *tree,int val){
+node* dfs(node *tree,int val){  //Depth First Search on Binary Tree
   if(tree==NULL || tree->key==val) return tree;
   node* lt = dfs(tree->left,val);
   return (lt!=NULL)?lt:dfs(tree->right,val);
 }
-int main(){
+int main(){                     //Implements Everything
   #if defined(_WIN32)
     system("cls");
   #elif defined(__linux__) || defined(__APPLE__)
@@ -76,5 +77,6 @@ int main(){
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
+  printf("Coded By: Arghyadip Chakraborty\n");
   return 0;
 }

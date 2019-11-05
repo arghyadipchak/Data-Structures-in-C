@@ -5,37 +5,38 @@
 #define CHAR 0
 #define NUMBER 1
 
-union element{
+//Credits: Arghyadip Chakraborty
+union element{          //Union to store Element
   int no;
   char ct;
 };
-typedef struct elm{
+typedef struct elm{     //Stores a Union & the Type of Data it stores
   union element data;
   int type;
 }elm;
-typedef struct array{
+typedef struct array{   //Array of such Elements
   elm *st;
   int size;
 }array;
-array* create_array(int cp){
+array* create_array(int cp){              //Creates array of size cp
   array *tmp = (array*) malloc(sizeof(array));
   tmp->st = (elm*) calloc(cp,sizeof(elm));
   tmp->size = 0;
 }
-void add_num(array *tm,int num){
+void add_num(array *tm,int num){          //Adds a Number to the array
   (tm->st[tm->size]).data.no = num;
   (tm->st[tm->size]).type = NUMBER;
   tm->size++;
 }
-void add_char(array *tm,char ch){
+void add_char(array *tm,char ch){         //Adds a character to the array
   (tm->st[tm->size]).data.ct = ch;
   (tm->st[tm->size]).type = CHAR;
   tm->size++;
 }
-int isValid(char c){
+int isValid(char c){                      //Checks if the Character is Valid
   return (c=='+')+(c=='-')+(c=='*')+(c=='/')+(c=='^')+(c=='(')+(c==')');
 }
-array* str_to_arr(char st[]){
+array* str_to_arr(char st[]){             //Converts String to Array
   array *tmp = create_array(strlen(st));
   int tnum;
   for(int i=0;i<strlen(st);i++){
@@ -54,7 +55,7 @@ array* str_to_arr(char st[]){
   return tmp;
 }
 
-int prec(char ch){
+int prec(char ch){              //Returns Precedence of Operator
   switch(ch){
     case '(': return 0;
     case '+':
@@ -64,7 +65,7 @@ int prec(char ch){
     case '^': return 3;
   }
 }
-array* in_to_post(char st[]){
+array* in_to_post(char st[]){   //Converts Infix exp to Postfix
   array *tmp = str_to_arr(st);
   array *exp = create_array(tmp->size);
   stack *chs = create_stack(tmp->size);
@@ -89,7 +90,7 @@ array* in_to_post(char st[]){
   while(!isEmpty(chs)) add_char(exp,Pop(chs));
   return exp;
 }
-void print_array(array *ar){
+void print_array(array *ar){      //Prints Array
   for(int i=0;i<ar->size;i++){
     if((ar->st[i]).type==NUMBER)
       printf((i<ar->size-1)?"%d,":"%d\n",(ar->st[i]).data.no);
@@ -97,12 +98,12 @@ void print_array(array *ar){
       printf((i<ar->size-1)?"%c,":"%c\n",(ar->st[i]).data.no);
   }
 }
-int power(int a,int b){
+int power(int a,int b){           //Evaluates a^b
   int t=1;
   for(int i=0;i<b;i++) t*=a;
   return t;
 }
-int eval(int a,int b,char op){
+int eval(int a,int b,char op){    //Evaluates a<op>b
   switch(op){
     case '+': return a+b;
     case '-': return a-b;
@@ -111,7 +112,7 @@ int eval(int a,int b,char op){
     case '^': return power(a,b);
   }
 }
-int eval_post(array *arr){
+int eval_post(array *arr){        //Evaluates Postfix Expression
   stack *num = create_stack(arr->size);
   for(int i=0;i<arr->size;i++){
     if((arr->st[i]).type==NUMBER) Push(num,(arr->st[i]).data.no);
@@ -119,7 +120,7 @@ int eval_post(array *arr){
   }
   return Pop(num);
 }
-int main(){
+int main(){                       //Implements Everything
   #if defined(_WIN32)
     system("cls");
   #elif defined(__linux__) || defined(__APPLE__)
@@ -160,5 +161,6 @@ int main(){
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
+  printf("Coded By: Arghyadip Chakraborty\n");
   return 0;
 }

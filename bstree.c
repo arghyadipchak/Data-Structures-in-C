@@ -2,25 +2,26 @@
 #include <stdlib.h>
 #include "tree.h"
 
-node* new_node(int val){
+//Credits: Kapil Krishna
+node* new_node(int val){              //Creates new node
   node *tmp = malloc(sizeof(node));
   tmp->key = val;
   tmp->left = NULL;
   tmp->right = NULL;
   return tmp;
 }
-node* insert(node *tree,int val){
+node* insert(node *tree,int val){     //Inserts new node
   if(tree==NULL) tree = new_node(val);
   else if(tree->key>val) tree->left = insert(tree->left,val);
   else tree->right = insert(tree->right,val);
   return tree;
 }
-node* search(node *tree,int val){
+node* search(node *tree,int val){     //Search the Tree for a Value
   if(tree==NULL || tree->key==val) return tree;
   else if(tree->key>val) return search(tree->left,val);
   else return search(tree->right,val);
 }
-int main(){
+int main(){                           //Implements Everything
   #if defined(_WIN32)
     system("cls");
   #elif defined(__linux__) || defined(__APPLE__)
@@ -58,5 +59,6 @@ int main(){
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
+  pritnf("Coded By: Kapil Krishna\n");
   return 0;
 }

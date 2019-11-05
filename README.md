@@ -11,6 +11,6 @@ Group Members:
 * Amitakshar Biswas  
 * Soumyajyoti Kundu  
 * Kapil Krishna  
-* Varun Pramod Agarwal  
-* Rishika Agarwal  
+* Varun Pramod Agrawal  
+* Rishika Agrawal  
 * Sandipan Mishra  
