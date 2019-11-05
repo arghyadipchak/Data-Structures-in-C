@@ -203,5 +203,6 @@ int main(){
 		printf("\nDo you want to choose again? 1 for YES,0 for NO\n");
 		scanf("%d",&choice);
 	  }while(choice);
+    printf("\t----X----\n\n");
    return 0;
    }

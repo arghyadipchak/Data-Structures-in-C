@@ -109,4 +109,5 @@ int main(){
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
+  return 0;
 }

@@ -56,5 +56,6 @@ int main(){
     else if(ch==6) break;
     else printf("Invalid Choice!!\n");
   }
+  printf("\t----X----\n\n");
   return 0;
 }
