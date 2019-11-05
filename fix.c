@@ -32,11 +32,8 @@ void add_char(array *tm,char ch){
   (tm->st[tm->size]).type = CHAR;
   tm->size++;
 }
-int isOperator(char c){
-  return (c=='+')+(c=='-')+(c=='*')+(c=='/')+(c=='^');
-}
 int isValid(char c){
-  return isOperator(c)+(c=='(')+(c==')');
+  return (c=='+')+(c=='-')+(c=='*')+(c=='/')+(c=='^')+(c=='(')+(c==')');
 }
 array* str_to_arr(char st[]){
   array *tmp = create_array(strlen(st));
@@ -49,12 +46,9 @@ array* str_to_arr(char st[]){
         tnum = tnum*10 + ((int)st[i])-48;
       }
       add_num(tmp,tnum);
-      printf("%d\n",tnum);
     }
-    else if(isValid(st[i])){
+    else if(isValid(st[i]))
       add_char(tmp,st[i]);
-      printf("%c\n",st[i]);
-    }
   }
   //tmp->st = (elm*) realloc(tmp,tmp->size*sizeof(elm));
   return tmp;
@@ -103,9 +97,30 @@ void print_array(array *ar){
       printf((i<ar->size-1)?"%c,":"%c\n",(ar->st[i]).data.no);
   }
 }
-void eval_post(array *arr){
-
+int power(int a,int b){
+  int t=1;
+  for(int i=0;i<b;i++) t*=a;
+  return t;
+}
+int eval(int a,int b,char op){
+  switch(op){
+    case '+': return a+b;
+    case '-': return a-b;
+    case '*': return a*b;
+    case '/': return a/b;
+    case '^': return power(a,b);
+  }
+}
+int eval_post(array *arr){
+  stack *num = create_stack(arr->size);
+  for(int i=0;i<arr->size;i++){
+    if((arr->st[i]).type==NUMBER) Push(num,(arr->st[i]).data.no);
+    else Push(num,eval(Pop(num),Pop(num),(arr->st[i]).data.ct));
+  }
+  return Pop(num);
 }
 int main(){
-  print_array(in_to_post("(25*36^2)+6"));
+  array *t = in_to_post("2+(3^5*2-1)");
+  print_array(t);
+  printf("%d\n",eval_post(t));
 }
