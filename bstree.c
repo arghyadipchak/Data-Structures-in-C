@@ -7,6 +7,7 @@ node* new_node(int val){
   tmp->key = val;
   tmp->left = NULL;
   tmp->right = NULL;
+  return tmp;
 }
 node* insert(node *tree,int val){
   if(tree==NULL) tree = new_node(val);
@@ -48,7 +49,7 @@ int main(){
       printf("Enter Element: ");
       scanf("%d",&n);
       node *fd = search(bst,n);
-      printf((fd==NULL)?"%d Not Found!\n":"%d Found!\n",n);
+      printf("%d %sFound!\n",n,(fd==NULL)?"Not ":"");
     }
     else if(ch==3 || ch==4 || ch==5){
       print_order(bst,ch-3);

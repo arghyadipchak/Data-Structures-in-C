@@ -6,12 +6,12 @@
 //Insertion Sort, Merge Sort
 
 void swap(int *arr,int p1,int p2){
-  int tmp = *(arr+p1);
+  int tmp = *(arr+p1);//arr[p1]
   *(arr+p1) = *(arr+p2);
   *(arr+p2) = tmp;
 }
 void selection_sort(int *arr,int n){
-  int minpos=0;
+  int minpos;
   for(int i=0;i<n-1;i++){
     minpos=i;
     for(int j=i+1;j<n;j++)
