@@ -7,7 +7,7 @@
 //Selection Sort, Bubble Sort
 //Insertion Sort, Merge Sort
 
-void swap(int *arr,int p1,int p2){          //Swaps values of two positions of the array
+void swap(int *arr,int p1,int p2){          //Swaps values of 2 positions of the array
   int tmp = *(arr+p1);//arr[p1]
   *(arr+p1) = *(arr+p2);
   *(arr+p2) = tmp;
