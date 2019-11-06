@@ -3,7 +3,7 @@
 #define INORDER 1
 #define POSTORDER 2
 
-//Credits: Kapil Krishna
+//Credits: G Kapil Krishna
 typedef struct node{              //Tree nodes structure
   int key;
   struct node *left,*right;

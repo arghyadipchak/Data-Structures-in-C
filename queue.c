@@ -20,17 +20,25 @@ int isFull(queue *q){               //Checks if Queue is Full
 int isEmpty(queue *q){              //Checks if Queue is Empty
   return (q->size == 0)?1:0;
 }
-int Enqueue(queue *q,int elm){      //Inserts new Element in Queue
-  if(isFull(q)) return 1;
-  q->que = insert_at_rear(q->que,elm);
-  q->size++;
-  return 0;
+int getFront(queue *q){             //Returns First Element
+  return front_element(q->que);
+}
+int getRear(queue *q){              //Returns Last Element
+  return rear_element(q->que);
+}
+void Enqueue(queue *q,int elm){      //Inserts new Element in Queue
+  if(!isFull(q)){
+    q->que = insert_at_rear(q->que,elm);
+    q->size++;
+  }
 }
 int Dequeue(queue *q){              //Removes last Element from Queue
-  if(isEmpty(q)) return 1;
-  q->que = rem_from_front(q->que);
-  q->size--;
-  return 0;
+  if(!isEmpty(q)){
+    int tmp = getFront(q);
+    q->que = rem_from_front(q->que);
+    q->size--;
+    return tmp;
+  }
 }
 void display_queue(queue *q){       //Prints Queue
   if(isEmpty(q))
@@ -42,12 +50,6 @@ void display_queue(queue *q){       //Prints Queue
         printf("%d ",arrq[i]);
       printf("\n");
   }
-}
-int getFront(queue *q){             //Returns First Element
-  return front_element(q->que);
-}
-int getRear(queue *q){              //Returns Last Element
-  return rear_element(q->que);
 }
 int main(){                         //Implements Everything
   #if defined(_WIN32)
@@ -74,19 +76,20 @@ int main(){                         //Implements Everything
     scanf("%d",&ch);
     printf("\n");
     if(ch==1){
-      printf("Enter Element: ");
-      scanf("%d",&n);
-      if(Enqueue(q,n))
+      if(isFull(q))
         printf("Queue Full!!!\n");
-      else printf("%d Enqueued!\n",n);
+      else{
+        printf("Enter Element: ");
+        scanf("%d",&n);
+        Enqueue(q,n);
+        printf("%d Enqueued!\n",n);
+      }
     }
     else if(ch==2){
       if(isEmpty(q))
         printf("Queue Empty!!!\n");
-      else{
-        printf("%d Dequeued!\n",q->que->item);
-        Dequeue(q);
-      }
+      else
+        printf("%d Dequeued!\n",Dequeue(q));
     }
     else if(ch==3){
       display_queue(q);

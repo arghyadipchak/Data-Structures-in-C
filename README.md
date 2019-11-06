@@ -10,7 +10,7 @@ Group Members:
 * Soham Ghosh  
 * Amitakshar Biswas  
 * Soumyajyoti Kundu  
-* Kapil Krishna  
+* G Kapil Krishna  
 * Varun Pramod Agrawal  
 * Rishika Agrawal  
-* Sandipan Mishra  
+* Sandipan Misra  

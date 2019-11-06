@@ -1,0 +1,25 @@
+Linked List:-
++ linkedlist.c - Parijat Chakraborty & Soham Bakshi
++ linkedint.h - Parijat Chakraborty
+
+Stack:-
++ stack.h - Sandipan Misra & Varun Pramod Agrawal
++ stack.c - Sandipan Misra & Varun Pramod Agrawal
+
+Queue;-
++ queue.c - Amitakshar Biswas & Soumyajyoti Kundu
+
+Binary Tree & Binary Search Tree:-
++ tree.h - G Kapil Krishna
++ tree_que.h - Arghyadip Chakraborty
++ bstree.c - G Kapil Krishna
++ bintree.c - Arghyadip Chakraborty
+
+Sortings:-
++ sorts.c - Soham Ghosh & Rishika Agrawal
+
+Infix Postfix:-
++ fix.c - Arghyadip Chakraborty
+
+Overall:-
++ helper.py - Arghyadip Chakraborty
