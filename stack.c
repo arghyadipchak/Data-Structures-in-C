@@ -60,6 +60,6 @@ int main(){                 //Implements Everything
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
-  printf("Coded By: Sandipan Misra and Varun Pramod Agrawal\n")
+  printf("Coded By: Sandipan Misra and Varun Pramod Agrawal\n");
   return 0;
 }
