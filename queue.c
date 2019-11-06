@@ -111,6 +111,6 @@ int main(){                         //Implements Everything
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
-  printf("Amitakshar Biswas and Soumyajyoti Kundu\n");
+  printf("Coded By: Amitakshar Biswas and Soumyajyoti Kundu\n");
   return 0;
 }
