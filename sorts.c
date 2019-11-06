@@ -100,6 +100,6 @@ int main(){                                   //Implements Everything
     printf("\n");
   }
   printf("\t----X----\n\n");
-  printf("Coded By: Soham Bakshi and Rishika Agrawal\n");
+  printf("Coded By: Soham Ghosh and Rishika Agrawal\n");
   return 0;
 }
