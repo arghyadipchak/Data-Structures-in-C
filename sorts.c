@@ -99,7 +99,7 @@ int main(){                                   //Implements Everything
     for(int i=0;i<n;i++)printf("%d ",arr[i]);
     printf("\n");
   }
-  printf("\t----X----\n");
-  printf("Coded By: Soham Bakshi and Rishika Agrawal\n");
+  printf("\t----X----\n\n");
+  printf("Coded By: Soham Ghosh and Rishika Agrawal\n");
   return 0;
 }
