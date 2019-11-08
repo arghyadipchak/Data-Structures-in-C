@@ -10,7 +10,7 @@ typedef struct studentNODE
       }node;
 node* createnode(int n,char str[])         		//Creates new node
      {node* temp=NULL;
-      temp=(node*)malloc(sizeof(node));    
+      temp=(node*)malloc(sizeof(node));
       temp->id=n;
       strcpy(temp->name,str);
       return temp;
@@ -18,7 +18,7 @@ node* createnode(int n,char str[])         		//Creates new node
 node* append(node* head,int n,char str[])  		//Adds node to the end of list
      {node* temp=NULL,*ptr=NULL;
       temp=createnode(n,str);
-	  if(head==NULL)           
+	  if(head==NULL)
 	    {temp->prev=NULL;
 	     temp->next=NULL;
 	     head=temp;
@@ -84,7 +84,6 @@ node* delnodeval(node* head,int val)			//Deletes a node with certain value
 	        {temp->next->prev=NULL;
 	         head=head->next;
 	         free(temp);
-	         return head;
 			}
 			else
 			 {temp->prev->next=temp->next;
