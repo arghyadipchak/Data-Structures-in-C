@@ -59,6 +59,6 @@ int main(){                           //Implements Everything
     else printf("Invalid Choice!!\n");
   }
   printf("\t----X----\n\n");
-  pritnf("Coded By: G Kapil Krishna\n");
+  printf("Coded By: G Kapil Krishna\n");
   return 0;
 }
